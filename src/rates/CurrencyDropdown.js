@@ -6,6 +6,7 @@ const CurrencyDropdown = ({ currencies, value, onChange }) => (
   <Dropdown
     placeholder="Choose currency"
     fluid
+    compact
     onChange={onChange}
     options={currencies}
     value={value} />

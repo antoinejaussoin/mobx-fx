@@ -8,6 +8,7 @@ export default ({ amount, currency, highlighted, onChange }) => (
     className={classNames(styles.container, { [styles.highlighted]: highlighted })}
     labelPosition="right"
     value={amount}
+    size="massive"
     onChange={(e) => {
       onChange(e.target.value);
     }}

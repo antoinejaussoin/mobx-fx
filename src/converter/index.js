@@ -15,7 +15,7 @@ const CalculatorIndex = ({ converter }) => (
 
     <Icon
       name={converter.isLeftToRight ? 'arrow right' : 'arrow left'}
-      size="large"
+      size="big"
       color="blue"
       circular
     />
