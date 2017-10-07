@@ -1,19 +1,29 @@
 import React from 'react';
 import { flow } from 'lodash-es';
 import { observer, inject } from 'mobx-react';
-import store from './ConverterStore';
+import { Icon } from 'semantic-ui-react';
 import Amount from './Amount';
+import styles from './index.css';
 
 const CalculatorIndex = ({ converter }) => (
-  <div>
+  <div className={styles.container}>
     <Amount
       amount={converter.convertedFromAmount}
       onChange={converter.updateFromAmount}
+      highlighted={converter.isLeftToRight}
       currency={converter.fromCurrency} />
+
+    <Icon
+      name={converter.isLeftToRight ? 'arrow right' : 'arrow left'}
+      size="large"
+      color="blue"
+      circular
+    />
     
     <Amount
       amount={converter.convertedToAmount}
       onChange={converter.updateToAmount}
+      highlighted={!converter.isLeftToRight}
       currency={converter.toCurrency} />
   </div>
 );

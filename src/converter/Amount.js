@@ -1,14 +1,19 @@
 import React from 'react';
-import { Input } from 'semantic-ui-react';
+import classNames from 'classnames';
+import { Input, Label } from 'semantic-ui-react';
+import styles from './Amount.css';
 
-export default ({ amount, currency, onChange }) => (
+export default ({ amount, currency, highlighted, onChange }) => (
   <Input
-    type="number"
-    label={{ tag: false, content: currency }}
-    labelPosition='left'
+    className={classNames(styles.container, { [styles.highlighted]: highlighted })}
+    labelPosition="right"
     value={amount}
     onChange={(e) => {
       onChange(e.target.value);
     }}
-  />
+  >
+    <Label basic>{currency.symbol}</Label>
+    <input />
+    <Label>{currency.iso}</Label>
+  </Input>
 );

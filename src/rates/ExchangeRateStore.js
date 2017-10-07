@@ -9,9 +9,9 @@ export default class ExchangeRateStore {
   }
 
   @observable currencies = [
-    new Currency('GBP', 'British Pound'),
-    new Currency('EUR', 'Euro'),
-    new Currency('USD', 'United States Dollar')
+    new Currency('GBP', 'British Pound', '£'),
+    new Currency('EUR', 'Euro', '€'),
+    new Currency('USD', 'United States Dollar', '$')
   ];
   @computed get currenciesOptions() {
     return this.currencies.map(cur => ({
