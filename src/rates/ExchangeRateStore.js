@@ -3,7 +3,11 @@ import Currency from './Currency';
 
 useStrict(true);
 
-class ExchangeRateStore {
+export default class ExchangeRateStore {
+  constructor(root) {
+    this.root = root;
+  }
+
   @observable currencies = [
     new Currency('GBP', 'British Pound'),
     new Currency('EUR', 'Euro'),
@@ -53,7 +57,7 @@ class ExchangeRateStore {
   }
 }
 
-const store = new ExchangeRateStore();
+// const store = new ExchangeRateStore();
 
-export default store;
-export { ExchangeRateStore };
+// export default store;
+// export { ExchangeRateStore };

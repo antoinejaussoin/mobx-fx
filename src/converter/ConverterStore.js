@@ -1,6 +1,9 @@
 import { observable, computed, action } from 'mobx';
 
-class ConverterStore {
+export default class ConverterStore {
+  constructor(root) {
+    this.root = root;
+  }
   @observable fromAmount = 1000;
   @observable toAmount = null;
 
@@ -15,15 +18,22 @@ class ConverterStore {
   }
 
   @computed get convertedFromAmount() {
-    return this.fromAmount || this.toAmount /2;
+    return this.fromAmount || this.toAmount / this.rate;
   }
 
   @computed get convertedToAmount() {
-    return this.toAmount || this.fromAmount * 2;
+    return this.toAmount || this.fromAmount * this.rate;
   }
 
+  @computed get rate() {
+    return this.root.rates.rate;
+  }
+
+  @computed get fromCurrency() {
+    return this.root.rates.fromCurrency.iso;
+  }
+
+  @computed get toCurrency() {
+    return this.root.rates.toCurrency.iso;
+  }
 }
-
-const store = new ConverterStore();
-
-export default store;

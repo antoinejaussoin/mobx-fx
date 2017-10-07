@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react';
-import store from './ExchangeRateStore';
+import { observer, inject } from 'mobx-react';
 import ExchangeRate from './ExchangeRate';
 import CurrencyDropdown from './CurrencyDropdown';
 
-window.fx = store; // for debugging
-
+@inject('rates')
 @observer
 class RateIndex extends Component {
   componentDidMount() {
-    store.fetchRates();
+    this.props.rates.fetchRates();
   }
 
   render() {
+    const { rates } = this.props;
+    console.log('injected: ', this.props);
     return (
       <div>
         <CurrencyDropdown
-          currencies={store.currenciesOptions}
-          onChange={store.setFromCurrency}
-          value={store.fromCurrency} />
+          currencies={rates.currenciesOptions}
+          onChange={rates.setFromCurrency}
+          value={rates.fromCurrency} />
         <CurrencyDropdown
-          currencies={store.currenciesOptions}
-          onChange={store.setToCurrency}
-          value={store.toCurrency} />
-        <ExchangeRate rate={store.rate} pending={store.pending} />
+          currencies={rates.currenciesOptions}
+          onChange={rates.setToCurrency}
+          value={rates.toCurrency} />
+        <ExchangeRate rate={rates.rate} pending={rates.pending} />
       </div>
     )
   }
