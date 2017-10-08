@@ -1,11 +1,12 @@
 import { observable, computed, action } from 'mobx';
 import numeral from 'numeral';
+import rateStore from '../rates/store';
 
 const formatAmount = amount => numeral(amount).format('0,0.00');
 
-export default class ConverterStore {
-  constructor(root) {
-    this.root = root;
+export class ConverterStore {
+  constructor(ratesStore) {
+    this.ratesStore = ratesStore;
   }
   @observable fromAmount = 1000;
   @observable toAmount = null;
@@ -29,18 +30,20 @@ export default class ConverterStore {
   }
 
   @computed get rate() {
-    return this.root.rates.rate;
+    return this.ratesStore.rate;
   }
 
   @computed get fromCurrency() {
-    return this.root.rates.fromCurrency;
+    return this.ratesStore.fromCurrency;
   }
 
   @computed get toCurrency() {
-    return this.root.rates.toCurrency;
+    return this.ratesStore.toCurrency;
   }
 
   @computed get isLeftToRight() {
     return this.toAmount === null;
   }
 }
+
+export default new ConverterStore(rateStore);
