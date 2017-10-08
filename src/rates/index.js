@@ -9,7 +9,7 @@ import styles from './index.css';
 @observer
 class RateIndex extends Component {
   componentDidMount() {
-    this.props.store.fetchRates();
+    // this.props.store.fetchRates();
   }
 
   render() {

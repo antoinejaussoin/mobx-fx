@@ -3,7 +3,6 @@ import { ExchangeRateStore } from './store';
 const mockApi = {
   fetchRates: () => {
     return new Promise(resolve => {
-      console.log('called: ');
       resolve({
         'EUR': 1.1,
         'GBP': 1.2
