@@ -20,11 +20,11 @@ class RateIndex extends Component {
           <CurrencyDropdown
             currencies={store.currenciesOptions}
             onChange={store.setFromCurrency}
-            value={store.fromCurrency} />
+            value={store.fromCurrency.iso} />
           <CurrencyDropdown
             currencies={store.currenciesOptions}
             onChange={store.setToCurrency}
-            value={store.toCurrency} />
+            value={store.toCurrency.iso} />
         </div>
         <ExchangeRate
           fromCurrency={store.fromCurrency}

@@ -1,4 +1,5 @@
 import { observable, computed, action, useStrict } from 'mobx';
+import { find } from 'lodash';
 import Currency from './Currency';
 import api from './api';
 
@@ -19,18 +20,19 @@ export class ExchangeRateStore {
   @observable pending = false;
 
   @action setFromCurrency = (iso) => {
-    this.fromCurrency = iso;
+    this.fromCurrency = find(this.currencies, { iso });
   }
 
   @action setToCurrency = (iso) => {
-    this.toCurrency = iso;
+    this.toCurrency = find(this.currencies, { iso });
   }
 
   @computed get currenciesOptions() {
     return this.currencies.map(cur => ({
       text: cur.name,
-      value: cur,
-      flag: cur.flag
+      value: cur.iso,
+      flag: cur.flag,
+      key: cur.iso
     }));
   }
 
