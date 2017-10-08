@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import store from './store';
-import ExchangeRate from './ExchangeRate';
-import CurrencyDropdown from './CurrencyDropdown';
+import ExchangeRate from './components/ExchangeRate';
+import CurrencyDropdown from './components/CurrencyDropdown';
 import styles from './index.css';
 
 @inject(() => ({ store }))
@@ -13,7 +13,6 @@ class RateIndex extends Component {
   }
 
   render() {
-    console.log('props: ', this.props);
     const { store } = this.props;
     return (
       <div>

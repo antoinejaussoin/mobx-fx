@@ -3,7 +3,7 @@ import { flow } from 'lodash-es';
 import { observer, inject } from 'mobx-react';
 import store from './store';
 import { Icon } from 'semantic-ui-react';
-import Amount from './Amount';
+import Amount from './components/Amount';
 import styles from './index.css';
 
 const CalculatorIndex = ({ store }) => (
