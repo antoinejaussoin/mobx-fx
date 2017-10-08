@@ -1,5 +1,5 @@
 import React from 'react';
-import { flow } from 'lodash-es';
+import { flow } from 'lodash';
 import { observer, inject } from 'mobx-react';
 import store from './store';
 import { Icon } from 'semantic-ui-react';
