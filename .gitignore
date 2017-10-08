@@ -1,2 +1,4 @@
 node_modules
-.vscode
+.vscode/temp.sql
+.vscode/last.sql
+log.txt

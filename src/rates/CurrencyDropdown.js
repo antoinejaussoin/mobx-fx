@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import Dropdown from '../components/Dropdown';
+import Dropdown from 'components/Dropdown';
 
 const CurrencyDropdown = ({ currencies, value, onChange }) => (
   <Dropdown
