@@ -8,8 +8,8 @@ const rewireAbsolutePaths = require('./rewire/enable-absolute-paths');
 module.exports = function override(config, env) {
   config = injectBabelPlugin('mobx-deep-action', config);
   config = rewireMobX(config, env);
-  config = rewireCssModule(config);
-  config = rewireCssNext(config);
-  config = rewireAbsolutePaths(config);
+  config = rewireCssModule(config, env);
+  config = rewireCssNext(config, env);
+  config = rewireAbsolutePaths(config, env);
   return config;
 }

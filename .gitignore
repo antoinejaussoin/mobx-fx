@@ -1,4 +1,7 @@
-node_modules
+node_modules/
 .vscode/temp.sql
 .vscode/last.sql
+.vscode
+!.vscode/launch.json
 log.txt
+build/
