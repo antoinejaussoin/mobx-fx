@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-core": "^6.26.0",
     "babel-plugin-mobx-deep-action": "^1.5.2",
+    "babel-preset-jest": "^21.2.0",
+    "babel-preset-react-app": "^3.0.3",
     "classnames": "^2.2.5",
     "es6-promise": "^4.1.1",
     "is-primitive": "^2.0.0",
@@ -31,6 +34,9 @@
   "jest": {
     "modulePaths": [
       "src"
-    ]
+    ],
+    "transform": {
+      "\\.js$": "<rootDir>/rewire/preprocessor.js"
+    }
   }
 }
