@@ -25,7 +25,10 @@ class RateIndex extends Component {
             onChange={rates.setToCurrency}
             value={rates.toCurrency} />
         </div>
-        <ExchangeRate rate={rates.rate} pending={rates.pending} />
+        <ExchangeRate
+          fromCurrency={rates.fromCurrency}
+          toCurrency={rates.toCurrency}
+          rate={rates.rate} pending={rates.pending} />
       </div>
     )
   }

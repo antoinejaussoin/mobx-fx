@@ -1,0 +1,11 @@
+.container {
+  & p {
+    line-height: 2em;
+    vertical-align: text-top;
+
+    & b {
+      font-size: 2em;
+      padding: 0 10px;
+    }
+  }
+}

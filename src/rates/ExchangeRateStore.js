@@ -9,14 +9,15 @@ export default class ExchangeRateStore {
   }
 
   @observable currencies = [
-    new Currency('GBP', 'British Pound', '£'),
-    new Currency('EUR', 'Euro', '€'),
-    new Currency('USD', 'United States Dollar', '$')
+    new Currency('GBP', 'British Pound', '£', 'gb'),
+    new Currency('EUR', 'Euro', '€', 'eu'),
+    new Currency('USD', 'United States Dollar', '$', 'us')
   ];
   @computed get currenciesOptions() {
     return this.currencies.map(cur => ({
       text: cur.name,
-      value: cur
+      value: cur,
+      flag: cur.flag
     }));
   }
   @observable fromCurrency = this.currencies[0];
