@@ -5,11 +5,13 @@ import api from './api';
 
 useStrict(true);
 
+// Here we both export the actual class (for testing purposes)...
 export class ExchangeRateStore {
   constructor(api) {
     this.api = api;
   }
 
+  // This probably could be defined elsewhere
   @observable currencies = [
     new Currency('GBP', 'British Pound', '£', 'gb'),
     new Currency('EUR', 'Euro', '€', 'eu'),
@@ -45,6 +47,9 @@ export class ExchangeRateStore {
   
   @action fetchRates = () => {
     this.pending = true;
+    // If you are a MobX veteran, you'll probably notice that I am NOT wrapping the callbacks with "action":
+    // I found that very annoying to do, so I'm using a babel plugin that does that for me:
+    // mobx-deep-action (see https://github.com/mobxjs/babel-plugin-mobx-deep-action)
     return this.api.fetchRates()
       .then(rates => {
         this.currencies.forEach(currency => {
@@ -63,4 +68,5 @@ export class ExchangeRateStore {
   }
 }
 
+// ...and an instance of the class with the correct dependencies for actual use
 export default new ExchangeRateStore(api);

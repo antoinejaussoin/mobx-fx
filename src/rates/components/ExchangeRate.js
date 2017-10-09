@@ -12,4 +12,5 @@ const ExchangeRate = ({ fromCurrency, toCurrency, rate, pending }) => (
   </Segment>
 );
 
+// So every component needs to be wrapper in an observer function: I wonder if we couldn't automatise that using babel or something.
 export default observer(ExchangeRate);

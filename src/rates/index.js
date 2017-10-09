@@ -9,6 +9,8 @@ import styles from './index.css';
 @observer
 class RateIndex extends Component {
   componentDidMount() {
+    // I used to initiate the loading of rates here, but I'm now doing that from the root store '/src/store.js'
+    // Otherwise testing the entire App will jest (/src/App.test.js) crashes.
     // this.props.store.fetchRates();
   }
 

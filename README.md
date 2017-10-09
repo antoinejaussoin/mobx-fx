@@ -29,16 +29,23 @@ So I tried a few ways to deal with that and came up with:
 
 Problems:
 
-- When testing a component, we can mock the store at the higher level (the store we directly inject in this component) by giving a mock to the `store` prop (I need to write an example), but if a sub-component (a child component) also injects a store we can't really control that, so not ideal. Idealy, I want to introduce a proper DI library such as (InversifyJS)[http://inversify.io/].
+- When testing a component, we can mock the store at the higher level (the store we directly inject in this component) by giving a mock to the `store` prop (I need to write an example), but if a sub-component (a child component) also injects a store we can't really control that, so not ideal. Idealy, I want to introduce a proper DI library such as [InversifyJS](http://inversify.io/).
 
 ## React-create-app
 
 Another thing I wanted to avoid was to `eject` from the react-create-app. There are a few tools that allows intercepting the config and modify the webpack config on the fly, which should in theory be flexible enough to both keep the react-create-app AND customise it.
 
+See [react-app-rewired](https://github.com/timarney/react-app-rewired).
+
 That will allow us to update react-create-app as we go along, and hide the complexity behind it: it will continue to "just work" (in theory...).
 
 You can find how it works on `./config-overrides.js` and the files in `./rewire`.
 
-Note that I used postcss and cssnext here for fun, but we can easily use SCSS instead (as we will probably do).
+Note that I used `postcss` and `cssnext` here for fun, but we can easily use SCSS instead (as we will probably do).
 
-## 
+## Async actions
+
+One thing I found annoying with MobX was the [need to wrap any callback](https://mobx.js.org/best/actions.html) in an async `@action` with another `action` function.
+
+So I'm using a babel plugin that does that for me: [mobx-deep-action](https://github.com/mobxjs/babel-plugin-mobx-deep-action).
+

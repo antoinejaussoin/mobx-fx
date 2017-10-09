@@ -1,5 +1,6 @@
 import { observable, action } from 'mobx';
 
+// Very simple Currency model, which has one observable property
 class Currency {
   iso = '';
   name = '';

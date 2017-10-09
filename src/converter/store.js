@@ -5,6 +5,7 @@ import rateStore from '../rates/store';
 const formatAmount = amount => numeral(amount).format('0,0.00');
 
 export class ConverterStore {
+  // This store will need the rates, so we inject that other store here. This will allow mocking it for testing.
   constructor(ratesStore) {
     this.ratesStore = ratesStore;
   }
@@ -29,6 +30,7 @@ export class ConverterStore {
     return this.toAmount || formatAmount(this.fromAmount * this.rate);
   }
 
+  // This is probably unecessary, since we can access the ratesStore from this store, but I thought it's nicer
   @computed get rate() {
     return this.ratesStore.rate;
   }
