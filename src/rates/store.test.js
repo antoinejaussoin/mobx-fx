@@ -52,7 +52,7 @@ describe('Rates Store', () => {
       expect(store.rate).toBe(1.1 / 1.2);
     });
 
-    it('Should by default not be pending', () => {
+    it('Should not be pending anymore at that point', () => {
       expect(store.pending).toBe(false);
     });
   });
